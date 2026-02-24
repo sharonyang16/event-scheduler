@@ -13,12 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         if viewModel.isLoggedIn {
-            MainTabView().environmentObject(viewModel)
+                MainTabView().environmentObject(viewModel)
         }
         else {
-            LoginView().environmentObject(viewModel)
+                AuthenticationWrapperView().environmentObject(viewModel)
         }
-           
    
     } 
 }

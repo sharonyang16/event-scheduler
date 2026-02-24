@@ -10,7 +10,7 @@ import Combine
 
 @MainActor
 class AuthViewModel : ObservableObject {
-    @Published var isLoggedIn: Bool = true
+    @Published var isLoggedIn: Bool = false
     @Published var token: String?
     
     init() {

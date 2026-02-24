@@ -20,6 +20,11 @@ struct LoginView : View {
             
             Button("Sign In", action: viewModel.onSubmit).buttonStyle(.borderedProminent)
             
-        }
+            NavigationLink{
+                SignUpView()
+            } label: {
+                Text("here")
+            }
+        }.navigationBarBackButtonHidden(true)
     }
 }
