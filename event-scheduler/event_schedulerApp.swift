@@ -11,7 +11,7 @@ import SwiftUI
 struct event_schedulerApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: event_schedulerDocument()) { file in
-            ContentView(document: file.$document)
+            ContentView(document: file.$document).padding(30)
         }
     }
 }
