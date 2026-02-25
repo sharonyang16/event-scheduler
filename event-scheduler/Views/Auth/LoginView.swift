@@ -8,33 +8,48 @@
 import SwiftUI
 
 struct LoginView : View {
-    @EnvironmentObject var authViewModel : AuthViewModel
-    @StateObject private var viewModel = LoginViewModel()
+    @EnvironmentObject var vm : AuthViewModel
     
     var body: some View {
         VStack(spacing: 30) {
-            if viewModel.error?.isEmpty == false {
-                Text("Error: \(String(describing: viewModel.error))")
+            Text("Log In").font(Font.largeTitle.bold())
+            
+            if vm.error?.isEmpty == false {
+                Text(vm.error ?? "An unknown error occured.")
             }
-            Text("Log In")
-            TextField("Email", text: $viewModel.email).disableAutocorrection(true)
             
-            SecureField("Password", text: $viewModel.password).disableAutocorrection(true)
+       
+            TextField("Email", text: $vm.email)
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
+                .keyboardType(.emailAddress)
+                .textContentType(.username)
+                .border(Color(.secondarySystemBackground))
             
+            SecureField("Password", text: $vm.password)
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
+                .textContentType(.password)
+                .border(Color(.secondarySystemBackground))
+                
             Button {
                 Task {
-                     await viewModel.login()
-                 }
+                    await vm.login()
+                }
             } label: {
                 Text("Log In")
+            }.buttonStyle(.glassProminent)
+    
+            HStack {
+                Text("Don't have an account? Sign up")
+                NavigationLink{
+                    SignUpView()
+                } label: {
+                    Text("here")
+                }
             }
-            
-            
-            NavigationLink{
-                SignUpView()
-            } label: {
-                Text("here")
-            }
-        }.navigationBarBackButtonHidden(true)
+        }
+        .navigationBarBackButtonHidden(true)
+        .padding(30)
     }
 }

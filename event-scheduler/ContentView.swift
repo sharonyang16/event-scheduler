@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @Binding var document: event_schedulerDocument
-    @StateObject var viewModel = AuthViewModel()
+    @StateObject var session = AuthSession()
     
     var body: some View {
-        if viewModel.isLoggedIn {
-                MainTabView().environmentObject(viewModel)
+        if session.isLoggedIn {
+            MainTabView().environmentObject(session)
         }
         else {
-                AuthenticationWrapperView().environmentObject(viewModel)
+            AuthenticationWrapperView(session: session)
         }
    
     } 

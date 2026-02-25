@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct SignUpView : View {
+    @EnvironmentObject var session : AuthSession
+    
     var body: some View {
         VStack {
-            NavigationLink{
-                LoginView()
-            } label: {
-                Text("here")
+            HStack {
+                Text("Already have an account? Log in")
+                NavigationLink{
+                    LoginView()
+                } label: {
+                    Text("here")
+                }
             }
-        }.navigationBarBackButtonHidden(true)
+         
+        }.navigationBarBackButtonHidden(true).padding(30)
      
     }
 }
