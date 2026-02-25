@@ -11,7 +11,7 @@ import Foundation
 struct KeychainManager {
     static let service = "com.eventscheduler"
     
-    static func save(value: String, key: String) -> Void {
+    static func set(value: String, key: String) -> Void {
         let data = Data(value.utf8)
         
         let query: [String: Any] = [
