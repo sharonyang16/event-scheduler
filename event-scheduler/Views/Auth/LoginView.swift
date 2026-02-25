@@ -13,12 +13,22 @@ struct LoginView : View {
     
     var body: some View {
         VStack(spacing: 30) {
+            if viewModel.error?.isEmpty == false {
+                Text("Error: \(String(describing: viewModel.error))")
+            }
             Text("Log In")
-            TextField("Email", text: $viewModel.username).disableAutocorrection(true)
+            TextField("Email", text: $viewModel.email).disableAutocorrection(true)
             
             SecureField("Password", text: $viewModel.password).disableAutocorrection(true)
             
-            Button("Sign In", action: viewModel.onSubmit).buttonStyle(.borderedProminent)
+            Button {
+                Task {
+                     await viewModel.login()
+                 }
+            } label: {
+                Text("Log In")
+            }
+            
             
             NavigationLink{
                 SignUpView()
