@@ -9,10 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     @Binding var document: event_schedulerDocument
-
+    @StateObject var viewModel = AuthViewModel()
+    
     var body: some View {
-        TextEditor(text: $document.text)
-    }
+        if viewModel.isLoggedIn {
+                MainTabView().environmentObject(viewModel)
+        }
+        else {
+                AuthenticationWrapperView().environmentObject(viewModel)
+        }
+   
+    } 
 }
 
 #Preview {
