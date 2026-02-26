@@ -18,7 +18,6 @@ struct LoginView : View {
                 Text(vm.error ?? "An unknown error occured.")
             }
             
-       
             TextField("Email", text: $vm.email)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
