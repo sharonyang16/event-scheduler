@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var authViewModel : AuthViewModel
+    @EnvironmentObject var authSession: AuthSession
     
     var body: some View {
-        Text("my")
+        VStack {
+            Text("my")
+            Button {
+                Task {
+                    authSession.logout()
+                }
+            } label: {
+                Text("Log out")
+            }
+       
+        }
+  
     }
 }

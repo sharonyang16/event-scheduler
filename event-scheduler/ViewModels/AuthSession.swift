@@ -1,15 +1,24 @@
 //
-//  AuthViewModel.swift
+//  AuthSession.swift
 //  event-scheduler
 //
-//  Created by Sharon Yang on 2/24/26.
+//  Created by Sharon Yang on 2/25/26.
 //
 
 import Foundation
 import Combine
 
+protocol TokenProvider {
+    var token: String? { get }
+}
+
+protocol SessionManager {
+    func logout()
+}
+
+
 @MainActor
-class AuthViewModel : ObservableObject {
+class AuthSession: ObservableObject, TokenProvider, SessionManager {
     @Published var isLoggedIn: Bool = false
     @Published var token: String? = nil
     
@@ -21,7 +30,7 @@ class AuthViewModel : ObservableObject {
             self.isLoggedIn = true
         }
     }
-    
+  
     func setToken(token: String) -> Void  {
         KeychainManager.set(value: token, key: "authToken")
         self.token = token

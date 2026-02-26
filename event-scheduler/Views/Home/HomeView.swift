@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var authViewModel : AuthViewModel
+    @EnvironmentObject var authSession: AuthSession
     
     var body: some View {
         Text("hi")

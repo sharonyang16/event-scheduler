@@ -13,12 +13,7 @@ class APIService {
         let message: String
     }
     
-    static let baseURL: String = {
-           guard let url = Bundle.main.object(forInfoDictionaryKey: "APIBaseURL") as? String else {
-               fatalError("APIBaseURL not set in Info.plist")
-           }
-           return url
-    }()
+    static let baseURL: String? = Bundle.main.object(forInfoDictionaryKey: "APIBaseURL") as? String
 
     static func request<T: Codable>(
         endpoint: String,
@@ -26,7 +21,7 @@ class APIService {
         body: Encodable? = nil,
         token: String? = nil
     ) async throws -> T {
-        guard let url = URL(string: "\(baseURL)\(endpoint)") else {
+        guard let url = URL(string: "\(baseURL ?? "")\(endpoint)") else {
             throw APIError.badURL
         }
 
