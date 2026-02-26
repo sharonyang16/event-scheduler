@@ -29,6 +29,7 @@ class AuthViewModel : ObservableObject {
             return
         }
         
+        error = nil
         isLoading = true
         do {
             let response  = try await AuthService.signUp(
@@ -51,6 +52,7 @@ class AuthViewModel : ObservableObject {
             return
         }
         
+        error = nil
         isLoading = true
         do {
             let response  = try await AuthService.login(

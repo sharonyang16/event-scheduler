@@ -15,7 +15,7 @@ struct LoginView : View {
             Text("Log In").font(Font.largeTitle.bold())
             
             if vm.error?.isEmpty == false {
-                Text(vm.error ?? "An unknown error occured.")
+                Banner(message: vm.error ?? "An unknown error occured.")
             }
             
             TextField("Email", text: $vm.email)
