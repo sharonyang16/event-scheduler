@@ -67,6 +67,15 @@ class AuthViewModel : ObservableObject {
         isLoading = false
     }
     
+    func resetStates() -> Void {
+        email = ""
+        password = ""
+        firstName = ""
+        lastName = ""
+        error = nil
+        isLoading = false
+    }
+    
     private func isSignUpFieldsValid() -> Bool {
         return !email.isEmpty && !password.isEmpty && !firstName.isEmpty && !lastName.isEmpty
     }
@@ -74,6 +83,4 @@ class AuthViewModel : ObservableObject {
     private func isLoginFieldsValid() -> Bool {
         return !email.isEmpty && !password.isEmpty
     }
-    
-    
 }

@@ -42,7 +42,7 @@ struct LoginView : View {
             HStack {
                 Text("Don't have an account? Sign up")
                 NavigationLink{
-                    SignUpView()
+                    SignUpView().onAppear(perform: vm.resetStates)
                 } label: {
                     Text("here")
                 }
