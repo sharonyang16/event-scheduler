@@ -15,7 +15,10 @@ struct SignUpView : View {
             Text("Register").font(Font.largeTitle.bold())
             
             if vm.error?.isEmpty == false {
-                Banner(message: vm.error ?? "An unknown error occured.")
+                Banner(
+                    message: vm.error ?? "An unknown error occured.",
+                    type: .error
+                )
             }
             
             HStack(spacing: 10) {
