@@ -21,10 +21,7 @@ class APIService {
         body: Encodable? = nil,
         token: String? = nil
     ) async throws -> T {
-        print("\(baseURL ?? "")\(endpoint)")
-        
         guard let url = URL(string: "\(baseURL ?? "")\(endpoint)") else {
-            print(baseURL as Any)
             throw APIError.badURL
         }
 

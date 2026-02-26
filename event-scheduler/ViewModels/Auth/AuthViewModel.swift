@@ -39,7 +39,6 @@ class AuthViewModel : ObservableObject {
                 lastName: self.lastName)
             
             self.session.setToken(token: response.token)
-            print(response.token)
         } catch {
             self.error = error.localizedDescription
         }
@@ -60,7 +59,6 @@ class AuthViewModel : ObservableObject {
                 password: self.password)
             
             self.session.setToken(token: response.token)
-            print(response.token)
         } catch {
             self.error = error.localizedDescription
         }
